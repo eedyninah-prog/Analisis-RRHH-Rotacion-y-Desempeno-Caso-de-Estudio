@@ -1,48 +1,62 @@
-📊 Análisis de RR.HH.: Rotación y Desempeño de Empleados
+# 📊 Análisis de RR.HH.: Rotación y Desempeño de Empleados
+
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2019-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![Status](https://img.shields.io/badge/Estado-Completado-brightgreen)
-📑 Tabla de Contenidos
-Resumen del Proyecto
-Descripción de las Columnas
-Análisis
-Conclusiones
+
+## 📑 Tabla de Contenidos
+- [Resumen del Proyecto](#-resumen-del-proyecto)
+- [Descripción de las Columnas](#%EF%B8%8F-descripción-de-las-columnas)
+- [Análisis](#-análisis-10-preguntas)
+- [Conclusiones](#-conclusiones-del-análisis)
+
 ---
-📋 Resumen del Proyecto
+
+## 📋 Resumen del Proyecto
+
 El personal de RR.HH. de la empresa GreatPlaceToWork (caso de estudio ficticio planteado para este proyecto) desea mejorar el desempeño, aumentar la retención y mejorar la satisfacción laboral general de sus empleados. Sin embargo, no cuenta con una visión clara de los datos pertinentes.
+
 El objetivo de este proyecto es utilizar SQL dentro de SQL Server Management Studio para analizar los datos disponibles y proporcionar recomendaciones al departamento de RR.HH. que faciliten mejoras exitosas.
-Fuente de datos: Employee Attrition Prediction Dataset — Kaggle (10,000 registros sintéticos de empleados, usados con fines educativos/de práctica)
+
+**Fuente de datos:** Employee Attrition Prediction Dataset — Kaggle (10,000 registros sintéticos de empleados, usados con fines educativos/de práctica).
+
 ---
-🗂️ Descripción de las Columnas
-Columna	Descripción
-`Employee_ID`	Identificador único del empleado
-`Age`	Edad del empleado
-`Gender`	Género
-`Marital_Status`	Estado civil
-`Department`	Departamento al que pertenece
-`Job_Role`	Puesto/rol de trabajo
-`Job_Level`	Nivel jerárquico del puesto
-`Monthly_Income`	Ingreso mensual
-`Hourly_Rate`	Tarifa por hora
-`Years_at_Company`	Años de antigüedad en la empresa
-`Years_in_Current_Role`	Años en el puesto actual
-`Years_Since_Last_Promotion`	Años desde su último ascenso
-`Work_Life_Balance`	Balance vida-trabajo (escala 1-4)
-`Job_Satisfaction`	Satisfacción laboral (escala 1-4)
-`Performance_Rating`	Calificación de desempeño
-`Training_Hours_Last_Year`	Horas de capacitación el último año
-`Overtime`	Si hace horas extra (1 = Sí, 0 = No)
-`Project_Count`	Cantidad de proyectos asignados
-`Average_Hours_Worked_Per_Week`	Promedio de horas trabajadas por semana
-`Absenteeism`	Días de ausentismo
-`Work_Environment_Satisfaction`	Satisfacción con el ambiente laboral
-`Relationship_with_Manager`	Calidad de relación con su jefe (escala)
-`Job_Involvement`	Nivel de involucramiento en el trabajo
-`Distance_From_Home`	Distancia de su casa al trabajo
-`Number_of_Companies_Worked`	Cantidad de empresas donde trabajó antes
-`Attrition`	Si el empleado dejó la empresa — 1 = Sí, 0 = No (variable objetivo)
+
+## 🗂️ Descripción de las Columnas
+
+| Columna | Descripción |
+| :--- | :--- |
+| `Employee_ID` | Identificador único del empleado |
+| `Age` | Edad del empleado |
+| `Gender` | Género |
+| `Marital_Status` | Estado civil |
+| `Department` | Departamento al que pertenece |
+| `Job_Role` | Puesto/rol de trabajo |
+| `Job_Level` | Nivel jerárquico del puesto |
+| `Monthly_Income` | Ingreso mensual |
+| `Hourly_Rate` | Tarifa por hora |
+| `Years_at_Company` | Años de antigüedad en la empresa |
+| `Years_in_Current_Role` | Años en el puesto actual |
+| `Years_Since_Last_Promotion` | Años desde su último ascenso |
+| `Work_Life_Balance` | Balance vida-trabajo (escala 1-4) |
+| `Job_Satisfaction` | Satisfacción laboral (escala 1-4) |
+| `Performance_Rating` | Calificación de desempeño |
+| `Training_Hours_Last_Year` | Horas de capacitación el último año |
+| `Overtime` | Si hace horas extra (1 = Sí, 0 = No) |
+| `Project_Count` | Cantidad de proyectos asignados |
+| `Average_Hours_Worked_Per_Week` | Promedio de horas trabajadas por semana |
+| `Absenteeism` | Días de ausentismo |
+| `Work_Environment_Satisfaction` | Satisfacción con el ambiente laboral |
+| `Relationship_with_Manager` | Calidad de relación con su jefe (escala) |
+| `Job_Involvement` | Nivel de involucramiento en el trabajo |
+| `Distance_From_Home` | Distancia de su casa al trabajo |
+| `Number_of_Companies_Worked` | Cantidad de empresas donde trabajó antes |
+| `Attrition` | Si el empleado dejó la empresa — 1 = Sí, 0 = No (variable objetivo) |
+
 ---
-🔍 Análisis (10 preguntas)
-1. ¿Qué porcentaje de empleados ha dejado la empresa?
+
+## 🔍 Análisis (10 preguntas)
+
+### 1. ¿Qué porcentaje de empleados ha dejado la empresa?
 ```sql
 SELECT
     CASE WHEN Attrition = 1 THEN 'Sí' ELSE 'No' END AS Se_Fue,
