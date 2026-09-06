@@ -52,6 +52,7 @@ FROM Empleados_Attrition
 GROUP BY Attrition;
 ```
 Hallazgo: El 19.97% de los empleados (1,997 de 10,000) dejó la empresa, mientras que el 80.03% permanece. Esta tasa es más alta que el promedio "saludable" de la industria (10-15%), lo que indica un problema de retención a nivel general.
+
 2. ¿Qué departamento tiene la mayor rotación de personal?
 ```sql
 SELECT
@@ -64,6 +65,7 @@ GROUP BY Department
 ORDER BY Tasa_Rotacion DESC;
 ```
 Hallazgo: Finance tiene la rotación más alta (20.85%), seguido de IT (20.35%). Marketing es el más estable (19.36%). Las diferencias entre departamentos son pequeñas (todas entre 19-21%), lo que sugiere que la rotación es un problema generalizado en toda la empresa, no aislado a un área específica.
+
 3. ¿El ingreso promedio varía según el departamento y el nivel de puesto?
 ```sql
 SELECT
@@ -75,6 +77,7 @@ GROUP BY Department, Job_Level
 ORDER BY Department, Job_Level;
 ```
 Hallazgo: El ingreso promedio se mantiene parejo entre departamentos y niveles (entre ~11,000 y ~12,000), sin una relación clara con el nivel jerárquico (Job_Level). Se esperaría que a mayor nivel, mayor ingreso, pero ese patrón no es consistente — por ejemplo, en Finance el nivel 3 gana más que el nivel 4.
+
 4. ¿Trabajar horas extra aumenta la probabilidad de renunciar?
 ```sql
 SELECT
@@ -96,6 +99,7 @@ FROM Empleados_Attrition
 GROUP BY Attrition;
 ```
 Hallazgo: No hay diferencia real: los que se van tienen en promedio 14.98 años de antigüedad y los que se quedan 14.92 años — prácticamente iguales. Esto va en contra de la idea común de que "los empleados nuevos son los que más renuncian"; aquí la antigüedad no explica quién se va.
+
 6. ¿Qué puesto de trabajo tiene la menor satisfacción laboral?
 ```sql
 SELECT
@@ -108,6 +112,7 @@ HAVING COUNT(*) > 10
 ORDER BY Satisfaccion_Promedio ASC;
 ```
 Hallazgo: Manager tiene la satisfacción promedio más baja (3.02 de una escala de 1-4), seguido muy de cerca por Analyst (3.02) y Assistant (3.04). Executive es el más satisfecho (3.07). Las diferencias son pequeñas, pero el rol de Manager merece atención — suelen tener más presión y responsabilidad sin una satisfacción proporcional.
+
 7. ¿Qué departamento tiene el mejor desempeño promedio?
 ```sql
 WITH DesempenoPorDepto AS (
@@ -125,6 +130,7 @@ FROM DesempenoPorDepto
 ORDER BY Ranking;
 ```
 Hallazgo: IT tiene el mejor desempeño promedio (2.55), seguido de Marketing (2.52) y HR (2.50). Sales tiene el desempeño más bajo (2.48). Curiosamente, IT también es el segundo departamento con más rotación (pregunta 2) — vale la pena investigar si la empresa está perdiendo a su gente de mejor desempeño en esa área.
+
 8. ¿El balance entre vida personal y trabajo influye en la rotación?
 ```sql
 SELECT
@@ -137,6 +143,7 @@ GROUP BY Work_Life_Balance
 ORDER BY Work_Life_Balance;
 ```
 Hallazgo: No hay una tendencia clara: la rotación va de 18.82% (nivel 3) a 21.52% (nivel 4). El nivel más alto de balance (4) tiene, sorprendentemente, la mayor rotación — lo contrario a lo esperado. Esto sugiere que el balance vida-trabajo no es, por sí solo, el principal motivo de salida.
+
 9. ¿Qué grupo (por estado civil y género) tiene más ausentismo?
 ```sql
 SELECT
@@ -148,6 +155,7 @@ GROUP BY Marital_Status, Gender
 ORDER BY Ausentismo_Promedio DESC;
 ```
 Hallazgo: Los hombres divorciados tienen el mayor ausentismo promedio (9.59 días), mientras que las mujeres casadas tienen el menor (9.22 días). La diferencia entre el grupo más alto y el más bajo es de menos de medio día, así que el efecto es real pero pequeño — no es un factor determinante por sí solo.
+
 10. ¿Cuántos empleados están en riesgo de renunciar por falta de ascensos y baja satisfacción?
 ```sql
 SELECT COUNT(*) AS Empleados_En_Riesgo
@@ -170,15 +178,22 @@ Hallazgo: 1,285 empleados activos (12.85% de toda la plantilla) llevan más de 5
 ✅ Conclusiones del Análisis
 La empresa tiene una tasa de rotación general del 19.97%, por encima del rango saludable de la industria (10-15%), confirmando un problema de retención real.
 La rotación no está concentrada en un solo departamento (19-21% en todos), lo que apunta a una causa estructural (cultura, compensación, crecimiento) más que a un problema aislado de un área.
+
 Los factores "clásicos" —horas extra, antigüedad, balance vida-trabajo— no muestran una relación fuerte con la rotación en este análisis. Esto sugiere que la fuga de personal responde a otras causas no tan evidentes a simple vista (compensación relativa, falta de crecimiento, clima laboral específico del equipo).
 El ingreso no escala claramente con el nivel de puesto, lo que podría generar frustración e incentivar la salida de empleados senior que no ven una recompensa proporcional a su experiencia.
+
 Hay un grupo grande y concreto (1,285 empleados, 12.85% de la plantilla) estancado hace más de 5 años sin ascenso y con baja satisfacción — este es el segmento más accionable y urgente para retener.
+
 Recomendaciones para RR.HH.:
 Revisar la política salarial y de crecimiento a nivel de toda la empresa, no solo por departamento, ya que la rotación es pareja en todas las áreas.
 Priorizar el seguimiento de los 1,285 empleados en riesgo (sin ascenso hace +5 años, baja satisfacción) con planes de desarrollo o conversaciones de carrera — es el grupo más fácil de identificar y accionar de inmediato.
+
 Investigar el caso de IT: tiene el mejor desempeño de toda la empresa pero también una de las rotaciones más altas — riesgo de estar perdiendo a los mejores talentos.
+
 Prestar atención especial a los Managers, que muestran la satisfacción laboral más baja entre los roles — podría deberse a exceso de carga o falta de apoyo en su posición intermedia.
+
 Profundizar el análisis con encuestas cualitativas, ya que los factores cuantitativos disponibles (horas extra, balance vida-trabajo) no explican por sí solos la decisión de renunciar.
+
 ---
 🛠️ Herramientas utilizadas
 SQL Server 2019 / SQL Server Management Studio
