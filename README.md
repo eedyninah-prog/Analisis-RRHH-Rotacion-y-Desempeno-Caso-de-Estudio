@@ -122,7 +122,7 @@ SELECT
 FROM Empleados_Attrition
 GROUP BY Attrition;
 ```
-H**Hallazgo:** No hay diferencia real: los que se van tienen en promedio 14.98 años de antigüedad y los que se quedan 14.92 años — prácticamente iguales. Esto va en contra de la idea común de que "los empleados nuevos son los que más renuncian"; aquí la antigüedad no explica quién se va.
+**Hallazgo:** No hay diferencia real: los que se van tienen en promedio 14.98 años de antigüedad y los que se quedan 14.92 años — prácticamente iguales. Esto va en contra de la idea común de que "los empleados nuevos son los que más renuncian"; aquí la antigüedad no explica quién se va.
 
 ---
 
@@ -157,7 +157,7 @@ SELECT
 FROM DesempenoPorDepto
 ORDER BY Ranking;
 ```
-H**Hallazgo:** IT tiene el mejor desempeño promedio (2.55), seguido de Marketing (2.52) y HR (2.50). Sales tiene el desempeño más bajo (2.48). Curiosamente, IT también es el segundo departamento con más rotación (pregunta 2) — vale la pena investigar si la empresa está perdiendo a su gente de mejor desempeño en esa área.
+**Hallazgo:** IT tiene el mejor desempeño promedio (2.55), seguido de Marketing (2.52) y HR (2.50). Sales tiene el desempeño más bajo (2.48). Curiosamente, IT también es el segundo departamento con más rotación (pregunta 2) — vale la pena investigar si la empresa está perdiendo a su gente de mejor desempeño en esa área.
 
 ---
 
@@ -186,7 +186,7 @@ FROM Empleados_Attrition
 GROUP BY Marital_Status, Gender
 ORDER BY Ausentismo_Promedio DESC;
 ```
-H**Hallazgo:** Los hombres divorciados tienen el mayor ausentismo promedio (9.59 días), mientras que las mujeres casadas tienen el menor (9.22 días). La diferencia entre el grupo más alto y el más bajo es de menos de medio día, así que el efecto es real pero pequeño — no es un factor determinante por sí solo.
+**Hallazgo:** Los hombres divorciados tienen el mayor ausentismo promedio (9.59 días), mientras que las mujeres casadas tienen el menor (9.22 días). La diferencia entre el grupo más alto y el más bajo es de menos de medio día, así que el efecto es real pero pequeño — no es un factor determinante por sí solo.
 
 ---
 
