@@ -185,6 +185,7 @@ El ingreso no escala claramente con el nivel de puesto, lo que podría generar f
 Hay un grupo grande y concreto (1,285 empleados, 12.85% de la plantilla) estancado hace más de 5 años sin ascenso y con baja satisfacción — este es el segmento más accionable y urgente para retener.
 
 Recomendaciones para RR.HH.:
+
 Revisar la política salarial y de crecimiento a nivel de toda la empresa, no solo por departamento, ya que la rotación es pareja en todas las áreas.
 Priorizar el seguimiento de los 1,285 empleados en riesgo (sin ascenso hace +5 años, baja satisfacción) con planes de desarrollo o conversaciones de carrera — es el grupo más fácil de identificar y accionar de inmediato.
 
