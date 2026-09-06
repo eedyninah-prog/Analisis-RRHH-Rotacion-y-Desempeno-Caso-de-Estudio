@@ -64,11 +64,13 @@ SELECT
     CAST(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER() AS DECIMAL(5,2)) AS Porcentaje
 FROM Empleados_Attrition
 GROUP BY Attrition;
-```
-Hallazgo: El 19.97% de los empleados (1,997 de 10,000) dejó la empresa, mientras que el 80.03% permanece. Esta tasa es más alta que el promedio "saludable" de la industria (10-15%), lo que indica un problema de retención a nivel general.
 
-2. ¿Qué departamento tiene la mayor rotación de personal?
-```sql
+```
+**Hallazgo:** El 19.97% de los empleados (1,997 de 10,000) dejó la empresa, mientras que el 80.03% permanece. Esta tasa es más alta que el promedio "saludable" de la industria (10-15%), lo que indica un problema de retención a nivel general.
+
+---
+
+### 2. ¿Qué departamento tiene la mayor rotación de personal?
 SELECT
     Department,
     COUNT(*) AS Total_Empleados,
@@ -78,9 +80,11 @@ FROM Empleados_Attrition
 GROUP BY Department
 ORDER BY Tasa_Rotacion DESC;
 ```
-Hallazgo: Finance tiene la rotación más alta (20.85%), seguido de IT (20.35%). Marketing es el más estable (19.36%). Las diferencias entre departamentos son pequeñas (todas entre 19-21%), lo que sugiere que la rotación es un problema generalizado en toda la empresa, no aislado a un área específica.
+**Hallazgo:** Finance tiene la rotación más alta (20.85%), seguido de IT (20.35%). Marketing es el más estable (19.36%). Las diferencias entre departamentos son pequeñas (todas entre 19-21%), lo que sugiere que la rotación es un problema generalizado en toda la empresa, no aislado a un área específica.
 
-3. ¿El ingreso promedio varía según el departamento y el nivel de puesto?
+---
+
+### 3. ¿El ingreso promedio varía según el departamento y el nivel de puesto?
 ```sql
 SELECT
     Department,
