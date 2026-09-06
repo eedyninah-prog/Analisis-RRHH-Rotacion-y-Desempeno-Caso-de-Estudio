@@ -70,18 +70,19 @@ GROUP BY Attrition;
 
 ---
 
-### 2. ¿Qué departamento tiene la mayor rotación de personal?
+#2. ¿Qué departamento tiene la mayor rotación de personal?
+```sql
 SELECT
-		Department,
-		COUNT(*) AS Total_Empleados,
-		SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) AS Se_Fueron,
-		CAST(SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS DECIMAL(5,2)) AS Tasa_Rotacion
-	FROM Empleados_Attrition
-	GROUP BY Department
-	ORDER BY Tasa_Rotacion DESC;
-	GO
+    Department,
+    COUNT(*) AS Total_Empleados,
+    SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) AS Se_Fueron,
+    CAST(SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS DECIMAL(5,2)) AS Tasa_Rotacion
+FROM Empleados_Attrition
+GROUP BY Department
+ORDER BY Tasa_Rotacion DESC;
+```
+Hallazgo: Finance tiene la rotación más alta (20.85%), seguido de IT (20.35%). Marketing es el más estable (19.36%). Las diferencias entre departamentos son pequeñas (todas entre 19-21%), lo que sugiere que la rotación es un problema generalizado en toda la empresa, no aislado a un área específica.
 
----
 
 ### 3. ¿El ingreso promedio varía según el departamento y el nivel de puesto?
 ```sql
